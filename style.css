@@ -1,0 +1,88 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+li{
+	text-decoration: none;
+	list-style: none;
+}
+body{
+	font-family:  sans-serif;
+}
+.logo{
+	background:#000 ;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.graficlogo{
+
+	padding: 5px;
+	width: 100%;
+	box-sizing: border-box;
+}
+.time{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	background: #000 ;
+}
+.time input{
+	font-size: 30px;
+	text-align: center;
+	background: #000 ;
+	color: #fff;
+}
+
+.valuta{
+	width: 100%;
+	display: inline-flex;
+	justify-content: center;
+	font-size: 16px;
+margin: 3px;
+font-weight: bold;
+}
+.valuta_usd,.valuta_eur,.valuta_rub,.valuta_uah,.valuta_pln{
+	padding: 2px 10px;
+	margin-left: 3px;
+	border: 1px solid #000;
+	display: inline-flex;
+	justify-content: center;
+}
+.mw-100{
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.advantages_container{
+	display: flex;
+	justify-content: center;
+}
+.advantags{
+	padding-top: 20px;
+	padding-bottom: 40px;
+	width: 70%;
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+	flex-wrap: wrap;
+}
+.adwantages_items{
+	width: 30%;
+	margin-top: 20px;
+}
+.adwantages_items a{
+	color: #000 ;
+}
+
+
+
+
+#map{
+	width: 100%;
+	height: 500px;
+}
+

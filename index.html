@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<title>ПАСП 11</title>
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+	<link rel="manifest" href="images/site.webmanifest">
+	<link rel="mask-icon" href="images/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#603cba">
+	<meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+	<header>
+		<div class="logo">
+			<a href="index.html"><img class="graficlogo" src="images/logo.png" alt="logo"></a>
+		</div>
+		<div class="time">
+			<script language="JavaScript">
+				function fulltime() {
+					var time = new Date();
+					document.clock.full.value = time.toLocaleString();
+					setTimeout('fulltime()', 500)
+				}
+			</script>
+			<form name="clock"><input size="30" name="full"></form>
+			<script language="JavaScript">
+				fulltime();
+			</script>
+
+		</div>
+		<div class="valuta">
+			<div class="valuta_usd"></div>
+			<div class="valuta_eur"></div>
+			<div class="valuta_rub"></div>
+			<div class="valuta_uah"></div>
+			<div class="valuta_pln"></div>
+		</div>
+
+	</header>
+	<main>
+		<img src="images/адаптив1.png" alt="" class="mw-100">
+		<div class="advantages_container">
+			<div class="advantags">
+				<div class="adwantages_items"><a href="calendar/calendar.html"><img
+							src="images/icons/icons8-календарь-96.png" alt="">
+						<h2>КАЛЕНДАРЬ</h2>
+						<p>по сменам</p>
+				</div>
+				<div class="adwantages_items"><a href="calculatorToplivo/calcToplivo.html">
+						<img src="images/icons/icons8-калькулятор-96.png" alt="">
+						<h2>РАСЧЕТ<br>ТОПЛИВА</h2>
+
+					</a>
+				</div>
+				<div class="adwantages_items"><a href="calculator_cotelnoe/calculator_cotelnoe.html">
+						<img src="images/icons/icons8-калькулятор-96.png" alt="">
+						<h2>РАСЧЕТ<br>КОТЕЛЬНОГО<br>ТОПЛИВА</h2>
+
+					</a>
+				</div>
+				<div class="adwantages_items"><a href="calculatorElectro/calcElectro.html">
+						<img src="images/icons/icons8-калькулятор-96.png" alt="">
+						<h2>РАСЧЕТ</h2>
+						<p>электроенергии</p>
+					</a>
+				</div>
+
+
+				<div class="adwantages_items"><a href="rucavnoe/rukavnoe.html">
+						<img src="images/icons/icons8-закладка-96.png" alt="">
+						<h2>РУКАВА</h2>
+						<p>инструкция по рукавному хозяйству</p>
+					</a>
+				</div>
+
+
+				
+				<div class="adwantages_items"><a href="calculatorASI/calculatorASI.html">
+					<img src="images/icons/icons8-калькулятор-96.png" alt="">
+					<h2>АСИ</h2>
+				</a>
+			</div>
+
+			<div class="adwantages_items"><a href="calculatorZamer/calculatorZamer.html">
+				<img src="images/icons/icons8-калькулятор-96.png" alt="">
+				<h2>ЗАМЕР</h2>
+			</a>
+		</div>
+
+				<div class="adwantages_items"><a href="calculator_GDZS/calculator_GDZS.html">
+						<img src="images/icons/icons8-калькулятор-96.png" alt="">
+						<h2>MSA</h2>
+					</a>
+				</div>
+
+			</div>
+		</div>
+	</main>
+
+	<script src="valuta.js"></script>
+
+</body>
+
+
+</html>

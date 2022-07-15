@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Топливо</title>
+    <link rel="stylesheet" href="calcToplivo.css">
+    <link rel="stylesheet" href="setting.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+    <link rel="manifest" href="../images/site.webmanifest">
+    <link rel="mask-icon" href="../images/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="settingConteiner">
+
+            <div class="allWidth">ДОБАВИТЬ АВТОМОБИЛЬ</div>
+
+            <div class="input">марка авто:</div>
+            <input maxlength="14" class="vInp" type="text" name="avto">
+            <div class="input">расход на 1 км:</div>
+            <input maxlength="5" type="number" name="km">
+            <div class="input">1 мин. с насосом:</div>
+            <input maxlength="5" type="number" name="sN">
+            <div class="input">1 мин. без насоса:</div>
+            <input maxlength="5" type="number" name="bn">
+
+
+            <input class="sawe" type="button" value="Добавить">
+            <br>
+
+            <div class="allWidth">ДОБАВЛЕННЫЕ АВТОМОБИЛИ:</div>
+
+
+            <div class="outAllAuto"></div>
+            <input class="sawe" type="button" value="Закрыть">
+        </div>
+        <div class="container">
+            <div class="name">ТОПЛИВО</div>
+            <div class="out"></div>
+            <div class="container_setting">
+                <div class="back_1" id="setting">&#128736; настройки</div>
+            </div>
+            <div class="radioBatton">
+
+            </div>
+
+            <div class="name1" id="km"></div>
+            <div class="inp inps inp1"></div>
+            <div class="name1" id="bn"></div>
+            <div class="inp inps inp2"></div>
+            <div class="name1" id="sN"></div>
+            <div class="inp inps inp3"></div>
+            <div class="clean"> &#10006; очистить</div>
+            <div class="back">&lArr; назад</div>
+            <div class="buttons">1</div>
+            <div class="buttons">2</div>
+            <div class="buttons">3</div>
+            <div class="buttons">4</div>
+            <div class="buttons">5</div>
+            <div class="buttons">6</div>
+            <div class="buttons">7</div>
+            <div class="buttons">8</div>
+            <div class="buttons">9</div>
+            <div class="buttons">0</div>
+
+            <div class="rezult">РАСЧЕТ</div>
+
+        </div>
+    </div>
+
+</body>
+<script src="calcToplivo.js"></script>
+<script src="setting.js"></script>
+
+</html>

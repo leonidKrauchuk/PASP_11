@@ -1,0 +1,104 @@
+* {
+  margin: 5px;
+  padding: 0;
+  user-select: none;
+}
+
+#calendarBig {
+  margin: auto;
+}
+
+#thead {
+  margin: 20px 30px;
+  text-align: center;
+  color: blue;
+}
+#thead-1 {
+  font-size: 25px;
+  border-radius: 3px;
+  box-shadow: 4px 4px 8px rgb(114, 114, 114);
+  padding: 20px 20px;
+  color: rgb(0, 0, 107);
+}
+
+#thead-2 {
+  font-size: 50px;
+  color: rgb(0, 0, 107);
+}
+
+td{
+  padding: 3px;
+}
+
+#calendarBig,
+#calendarBig table {
+  font: monospace;
+  line-height: 1.2em;
+  font-size: 18px;
+  text-align: center;
+
+}
+
+#calendarBig table {
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(141, 135, 135, 0.739);
+}
+
+tbody table {
+  background: rgba(245, 244, 244, 0.363);
+  padding: 5px;
+}
+
+#calendarBig table tbody td {
+  /* color: rgb(255, 255, 255); */
+  font-size: 18px;
+}
+
+.smena_1 {
+  color:rgb(90, 0, 0);
+  
+  background-color: rgb(252, 113, 113);
+  border-radius: 3px;
+  box-shadow: 2px 2px 3px rgb(90, 0, 0);
+  
+}
+
+.smena_2 {
+    color:rgb(110, 75, 0);
+  background-color: rgb(255, 246, 113);
+  border-radius: 10px;
+  box-shadow: 2px 2px 3px rgb(110, 75, 0);
+}
+
+.smena_3 {
+    color:rgb(4, 53, 0);
+  background-color: rgb(155, 252, 159);
+  box-shadow: 2px 2px 3px rgb(4, 53, 0);
+}
+.segodnya {
+  color:darkblue;
+  border: solid 2px darkblue;
+}
+
+
+.colors_smen {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.colors_smen .smena_1,
+.colors_smen .smena_2,
+.colors_smen .smena_3 {
+    
+    
+  padding: 8px;
+  margin: 5px;
+  /* color: rgb(255, 255, 255); */
+  font-size: 20px;
+  text-align: center;
+}
+@media (max-width: 400px) {
+  body {
+    width: 100vh;
+  }
+}
