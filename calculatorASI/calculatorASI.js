@@ -13,6 +13,7 @@ function vvod_ost() {
     ostatok.classList.add("active");
     rabota.classList.remove("active");
     zapr.classList.remove("active");
+    buttons[10].innerHTML=".";
     for (i = 0; i < buttons.length; i++) {
         buttons[i].onclick = function () {
             ostatok.innerHTML += this.innerHTML;
@@ -32,6 +33,7 @@ rabota.onclick = function () {
     ostatok.classList.remove("active");
     rabota.classList.add("active");
     zapr.classList.remove("active");
+    buttons[10].innerHTML="";
     for (i = 0; i < buttons.length; i++) {
         buttons[i].onclick = function () {
             rabota.innerHTML += this.innerHTML;
@@ -45,6 +47,7 @@ zapr.onclick = function () {
     ostatok.classList.remove("active");
     rabota.classList.remove("active");
     zapr.classList.add("active");
+    buttons[10].innerHTML=".";
     for (i = 0; i < buttons.length; i++) {
         buttons[i].onclick = function () {
             zapr.innerHTML += this.innerHTML;

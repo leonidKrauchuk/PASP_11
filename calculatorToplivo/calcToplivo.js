@@ -41,6 +41,7 @@ function vvod_ost()
     kilometrs.classList.remove("active");
     noPomp.classList.remove("active");
     pomp.classList.remove("active");
+    buttons[10].innerHTML=".";
     for (i = 0; i < buttons.length; i++) {
         buttons[i].onclick = function () {
             ostatok.innerHTML += this.innerHTML;
@@ -61,6 +62,7 @@ kilometrs.onclick = function () {
     kilometrs.classList.add("active");
     noPomp.classList.remove("active");
     pomp.classList.remove("active");
+    buttons[10].innerHTML="";
     for (i = 0; i < buttons.length; i++) {
         buttons[i].onclick = function () {
             kilometrs.innerHTML += this.innerHTML;
@@ -72,9 +74,11 @@ kilometrs.onclick = function () {
 
 
 noPomp.onclick = function () {
+    ostatok.classList.remove("active");
     kilometrs.classList.remove("active");
     noPomp.classList.add("active");
     pomp.classList.remove("active");
+    buttons[10].innerHTML="";
     for (i = 0; i < buttons.length; i++) {
         buttons[i].onclick = function () {
             noPomp.innerHTML += this.innerHTML;
@@ -85,9 +89,11 @@ noPomp.onclick = function () {
 }
 
 pomp.onclick = function () {
+    ostatok.classList.remove("active");
     kilometrs.classList.remove("active");
     noPomp.classList.remove("active");
     pomp.classList.add("active");
+    buttons[10].innerHTML="";
     for (i = 0; i < buttons.length; i++) {
         buttons[i].onclick = function () {
             pomp.innerHTML += this.innerHTML;
@@ -152,7 +158,6 @@ for (let i = 0; i < inputsRad.length; i++) {
 
     inputsRad[0].checked = true;
     naimAuto = inputsRad[0].id;
-    console.log(naimAuto);
     rashKm = inputsRad[0].attributes[4].value || 0;
     rashBn = inputsRad[0].attributes[5].value || 0;
     rashSn = inputsRad[0].attributes[6].value || 0;
@@ -188,40 +193,25 @@ for (let i = 0; i < inputsRad.length; i++) {
 rezult.onclick = function () {
     os = vvodOst || 0;
     os = parseFloat(os);
-    console.log(os);
     km = vvodKm || 0;
     km = parseInt(km);
-    console.log(km);
     bn = vvodNoPomp || 0;
     bn = parseInt(bn);
-    console.log(bn);
     sn = vvodPomp || 0;
     sn = parseInt(sn);
-    console.log(sn);
-
-    
-    console.log(naimAuto);
-    
-    
 
 if (os==0 && km == 0 && bn == 0 && sn == 0){
     resultat = (km * rashKm) + (bn * rashBn) + (sn * rashSn);
     out.innerHTML = `<span class="spanO">${naimAuto} (расход)</span> ${resultat.toFixed(3)} <span class="spanO"> л.</span>`;
-    console.log(1);
+
 }
 
-// if (os>0){
-//     resultat = (km * rashKm) + (bn * rashBn) + (sn * rashSn);
-//     out.innerHTML = `<span class="spanO">${naimAuto} (расход)</span> ${resultat.toFixed(3)} <span class="spanO"> л.</span>`;
-
-// }
 
    if(os == 0 && (km != 0 || bn != 0 || sn != 0 )){
         resultat = (km * rashKm) + (bn * rashBn) + (sn * rashSn);
-        out.style.color="black";
-        
+        out.style.color="black";   
         out.innerHTML = `<span class="spanO">${naimAuto} (расход)</span> ${resultat.toFixed(3)} <span class="spanO"> л.</span>`;
-        console.log(2);
+
     }
 
     else if(os != 0 ){
@@ -231,14 +221,12 @@ if (os==0 && km == 0 && bn == 0 && sn == 0){
             out.style.color="red";
         out.innerHTML = `<span class="spanO">${naimAuto} (остаток)</span> ${resultat.toFixed(3)} 
         <span class="spanO"> л.</span>`;
-        console.log(3);
         }
         else{
             out.style.color="black";
             out.innerHTML = `<span class="spanO">${naimAuto} (остаток)</span> ${resultat.toFixed(3)} <span class="spanO"> л.</span>`;
-            console.log(4);
+
         }
         
     }
 }
-
