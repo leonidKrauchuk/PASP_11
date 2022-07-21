@@ -5,10 +5,12 @@ let out = document.querySelector('.out');
 let buttons = document.querySelectorAll(".buttons");
 let rezult = document.querySelector(".rezult");
 let back = document.querySelector(".back");
+let ostatok = document.querySelector(".inpOst");
 
 let vvodKm = "";
 let vvodNoPomp = "";
 let vvodPomp = "";
+let vvodOst = "";
 
 // показать настройки
 
@@ -32,7 +34,30 @@ for (let i = 0; i < localStorage.length; i++) {
 
 // ввод данных
 
-function vvod_km() {
+function vvod_ost()
+{
+// ostatok.onclick=function() {
+    ostatok.classList.add("active");
+    kilometrs.classList.remove("active");
+    noPomp.classList.remove("active");
+    pomp.classList.remove("active");
+    for (i = 0; i < buttons.length; i++) {
+        buttons[i].onclick = function () {
+            ostatok.innerHTML += this.innerHTML;
+            vvodOst = ostatok.innerHTML;
+            out.innerHTML = "";
+        }
+    }
+}
+
+vvod_ost();
+
+ostatok.onclick=function() {
+    vvod_ost();
+}
+
+kilometrs.onclick = function () {
+    ostatok.classList.remove("active");
     kilometrs.classList.add("active");
     noPomp.classList.remove("active");
     pomp.classList.remove("active");
@@ -40,15 +65,11 @@ function vvod_km() {
         buttons[i].onclick = function () {
             kilometrs.innerHTML += this.innerHTML;
             vvodKm = kilometrs.innerHTML;
+            out.innerHTML = "";
         }
     }
 }
 
-vvod_km();
-
-kilometrs.onclick = function () {
-    vvod_km();
-}
 
 noPomp.onclick = function () {
     kilometrs.classList.remove("active");
@@ -58,6 +79,7 @@ noPomp.onclick = function () {
         buttons[i].onclick = function () {
             noPomp.innerHTML += this.innerHTML;
             vvodNoPomp = noPomp.innerHTML;
+            out.innerHTML = "";
         }
     }
 }
@@ -70,6 +92,7 @@ pomp.onclick = function () {
         buttons[i].onclick = function () {
             pomp.innerHTML += this.innerHTML;
             vvodPomp = pomp.innerHTML;
+            out.innerHTML = "";
         }
     }
 }
@@ -96,6 +119,7 @@ back.onclick = function () {
         vvodKm = String(vvodKm);
         vvodKm = vvodKm.substring(0, vvodKm.length - 1);
         kilometrs.innerHTML = vvodKm;
+        
     }
     if (noPomp.classList[3] == "active") {
         vvodNoPomp = String(vvodNoPomp);
@@ -107,10 +131,16 @@ back.onclick = function () {
         vvodPomp = vvodPomp.substring(0, vvodPomp.length - 1);
         pomp.innerHTML = vvodPomp;
     }
+    if (ostatok.classList[3] == "active") {
+        vvodOst = String(vvodOst);
+        vvodOst = vvodOst.substring(0, vvodOst.length - 1);
+        ostatok.innerHTML = vvodOst;
+    }
+    out.innerHTML = "";
 }
 
 // 
-
+let naimAuto = "";
 let inputsRad = document.querySelectorAll("input[name='radio']")
 
 for (let i = 0; i < inputsRad.length; i++) {
@@ -118,9 +148,11 @@ for (let i = 0; i < inputsRad.length; i++) {
     let outKm = document.querySelector("#km");
     let outBn = document.querySelector("#bn");
     let outSn = document.querySelector("#sN");
+    
 
     inputsRad[0].checked = true;
-
+    naimAuto = inputsRad[0].id;
+    console.log(naimAuto);
     rashKm = inputsRad[0].attributes[4].value || 0;
     rashBn = inputsRad[0].attributes[5].value || 0;
     rashSn = inputsRad[0].attributes[6].value || 0;
@@ -134,7 +166,7 @@ for (let i = 0; i < inputsRad.length; i++) {
     outSn.innerHTML = `<i>(${rashSn}л.)</i> с насосом:`;
 
     inputsRad[i].onclick = function () {
-
+        naimAuto = inputsRad[i].id;
         rashKm = inputsRad[i].attributes[4].value || 0;
         rashBn = inputsRad[i].attributes[5].value || 0;
         rashSn = inputsRad[i].attributes[6].value || 0;
@@ -146,21 +178,67 @@ for (let i = 0; i < inputsRad.length; i++) {
         outKm.innerHTML = `<i>(${rashKm}л.)</i> километры:`;
         outBn.innerHTML = `<i>(${rashBn}л.)</i> без насоса:`;
         outSn.innerHTML = `<i>(${rashSn}л.)</i> с насосом:`;
+
+        out.innerHTML = "";
     }
 }
 
 // расчет и вывод
 
 rezult.onclick = function () {
-
+    os = vvodOst || 0;
+    os = parseFloat(os);
+    console.log(os);
     km = vvodKm || 0;
     km = parseInt(km);
+    console.log(km);
     bn = vvodNoPomp || 0;
     bn = parseInt(bn);
+    console.log(bn);
     sn = vvodPomp || 0;
     sn = parseInt(sn);
+    console.log(sn);
+
+    
+    console.log(naimAuto);
+    
+    
+
+if (os==0 && km == 0 && bn == 0 && sn == 0){
     resultat = (km * rashKm) + (bn * rashBn) + (sn * rashSn);
-    out.innerHTML = resultat.toFixed(3);
-    resultat = out;
-    resultat.insertAdjacentHTML('beforeEnd', ' л.');
+    out.innerHTML = `<span class="spanO">${naimAuto} (расход)</span> ${resultat.toFixed(3)} <span class="spanO"> л.</span>`;
+    console.log(1);
 }
+
+// if (os>0){
+//     resultat = (km * rashKm) + (bn * rashBn) + (sn * rashSn);
+//     out.innerHTML = `<span class="spanO">${naimAuto} (расход)</span> ${resultat.toFixed(3)} <span class="spanO"> л.</span>`;
+
+// }
+
+   if(os == 0 && (km != 0 || bn != 0 || sn != 0 )){
+        resultat = (km * rashKm) + (bn * rashBn) + (sn * rashSn);
+        out.style.color="black";
+        
+        out.innerHTML = `<span class="spanO">${naimAuto} (расход)</span> ${resultat.toFixed(3)} <span class="spanO"> л.</span>`;
+        console.log(2);
+    }
+
+    else if(os != 0 ){
+
+        resultat = os- ((km * rashKm) + (bn * rashBn) + (sn * rashSn));
+        if(resultat < 0){
+            out.style.color="red";
+        out.innerHTML = `<span class="spanO">${naimAuto} (остаток)</span> ${resultat.toFixed(3)} 
+        <span class="spanO"> л.</span>`;
+        console.log(3);
+        }
+        else{
+            out.style.color="black";
+            out.innerHTML = `<span class="spanO">${naimAuto} (остаток)</span> ${resultat.toFixed(3)} <span class="spanO"> л.</span>`;
+            console.log(4);
+        }
+        
+    }
+}
+

@@ -1,20 +1,13 @@
 let ostatok = document.querySelector(".inpOst");
 let rabota = document.querySelector(".inpRab");
 let zapr = document.querySelector(".inpZapr");
-
 let out1 = document.querySelector('.out1');
 let buttons = document.querySelectorAll(".buttons");
 let rezult = document.querySelector(".rezult");
-
 let itogOst = 0;
 let itogRab = 0;
 let itogZapr = 0;
-
 let back = document.querySelector(".back");
-// let radioBs = document.querySelectorAll(".radioBattons")
-
-
-
 
 function vvod_ost() {
     ostatok.classList.add("active");
@@ -24,6 +17,7 @@ function vvod_ost() {
         buttons[i].onclick = function () {
             ostatok.innerHTML += this.innerHTML;
             itogOst = ostatok.innerHTML;
+            out1.innerHTML = "";
         }
     }
 }
@@ -42,6 +36,7 @@ rabota.onclick = function () {
         buttons[i].onclick = function () {
             rabota.innerHTML += this.innerHTML;
             itogRab = rabota.innerHTML;
+            out1.innerHTML = "";
         }
     }
 }
@@ -54,6 +49,7 @@ zapr.onclick = function () {
         buttons[i].onclick = function () {
             zapr.innerHTML += this.innerHTML;
             itogZapr = zapr.innerHTML;
+            out1.innerHTML = "";
         }
     }
 }
@@ -78,16 +74,19 @@ back.onclick = function () {
         itogOst = String(itogOst);
         itogOst = itogOst.substring(0, itogOst.length - 1);
         ostatok.innerHTML = itogOst;
+        out1.innerHTML = "";
     }
     if (rabota.classList[3] == "active") {
         itogRab = String(itogRab);
         itogRab = itogRab.substring(0, itogRab.length - 1);
         rabota.innerHTML = itogRab;
+        out1.innerHTML = "";
     }
     if (zapr.classList[3] == "active") {
         itogZapr = String(itogZapr);
         itogZapr = itogZapr.substring(0, itogZapr.length - 1);
         zapr.innerHTML = itogZapr;
+        out1.innerHTML = "";
     }
 }
 
@@ -100,6 +99,7 @@ inputsRadASI[0].checked = true;
 let raschRab = inputsRadASI[0].attributes[2].value || 0;
 let emkBak = inputsRadASI[0].attributes[4].value || 0;
 
+let naimASI = inputsRadASI[0].attributes[5].value || 0;
 
 
 for (let i = 0; i < inputsRadASI.length; i++) {
@@ -108,7 +108,7 @@ for (let i = 0; i < inputsRadASI.length; i++) {
 
         raschRab = inputsRadASI[i].attributes[2].value || 0;
         emkBak = inputsRadASI[i].attributes[4].value || 0;
-
+        naimASI = inputsRadASI[i].attributes[5].value || 0;
         out1.innerHTML = "";
     }
 }
@@ -124,28 +124,45 @@ rezult.onclick = function () {
     itogRab = parseInt(itogRab) || 0;
     itogZapr = parseFloat(itogZapr) || 0;
     raschRab = parseFloat(raschRab) || 0;
-
     emkBak = parseFloat(emkBak) || 0;
-
-
     resultat = itogOst - (itogRab * raschRab) + itogZapr;
-    console.log(resultat);
 
-    if (emkBak < resultat) {
 
-        out1.innerHTML = resultat.toFixed(3);
-        resultat = out1;
-        resultat.insertAdjacentHTML('afterbegin', 'перебор ');
-        resultat.insertAdjacentHTML('beforeEnd', ' л.');
-        resultat.style.color="red";
+    if (resultat == 0) {
+
+        out1.style.color="black";
+        out1.innerHTML = `<span class="spanO" >${naimASI} (остаток) </span>${resultat.toFixed(3)}
+        <span class="spanO"> л.</span>`;    
+       
     }
-    else {
+    if (resultat <0 && itogOst==0 && itogZapr==0) {
+       
+        resultat=Math.abs(resultat);
+        out1.style.color="black";
+        out1.innerHTML = `<span class="spanO" >${naimASI} (расход) </span>${resultat.toFixed(3)}
+        <span class="spanO"> л.</span>`;    
+       
+    }
+    if (resultat < 0 && (itogOst || itogZapr!=0))  {
+       
+        out1.style.color="red";
+        out1.innerHTML = `<span class="spanO" >${naimASI} (остаток) </span>${resultat.toFixed(3)}
+        <span class="spanO"> л.</span>`;
+  
+    }
+    if (resultat > 0 && (itogOst || itogZapr!=0) && emkBak>=resultat)  {
         
-        out1.innerHTML = resultat.toFixed(3);
+        out1.style.color="black";
+        out1.innerHTML = `<span class="spanO" >${naimASI} (остаток) </span>${resultat.toFixed(3)}
+        <span class="spanO"> л.</span>`;
 
-        resultat = out1;
-        resultat.style.color="black";
-        resultat.insertAdjacentHTML('beforeEnd', ' л.');
+    }
+    if (resultat > 0 && (itogOst || itogZapr!=0) && emkBak<=resultat)  {
+       
+        out1.style.color="red";
+        out1.innerHTML = `<span class="spanO" >${naimASI} (бак ${emkBak} л.) </span>${resultat.toFixed(3)}
+        <span class="spanO"> л.</span>`;
+
     }
 
 }

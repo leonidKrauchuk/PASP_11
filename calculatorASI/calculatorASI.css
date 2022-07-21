@@ -6,6 +6,11 @@ body, select{
 span{
     font-size: 12px;
 }
+.spanO{
+    font-size: 14px;
+    color:rgb(73, 72, 72);
+    font-style: oblique;
+}
 .container{
     
     border-radius: 10px;

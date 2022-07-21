@@ -11,6 +11,11 @@ i{
     color: grey;
     font-size: 12px;
 }
+.spanO{
+    font-size: 14px;
+    color:rgb(73, 72, 72);
+    font-style: oblique;
+}
 .wrapper{
   display: flex;
   justify-content: center;
