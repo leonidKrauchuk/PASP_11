@@ -4,7 +4,6 @@ body, select{
     user-select: none;
 }
 .container{
-    
     border-radius: 10px;
     margin: auto;
     width: 50%;   

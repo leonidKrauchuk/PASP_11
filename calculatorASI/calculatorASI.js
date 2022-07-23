@@ -2,6 +2,7 @@ let ostatok = document.querySelector(".inpOst");
 let rabota = document.querySelector(".inpRab");
 let zapr = document.querySelector(".inpZapr");
 let out1 = document.querySelector('.out1');
+let out2 = document.querySelector('.out2');
 let buttons = document.querySelectorAll(".buttons");
 let rezult = document.querySelector(".rezult");
 let itogOst = 0;
@@ -19,6 +20,7 @@ function vvod_ost() {
             ostatok.innerHTML += this.innerHTML;
             itogOst = ostatok.innerHTML;
             out1.innerHTML = "";
+            out2.innerHTML = "";
         }
     }
 }
@@ -39,6 +41,7 @@ rabota.onclick = function () {
             rabota.innerHTML += this.innerHTML;
             itogRab = rabota.innerHTML;
             out1.innerHTML = "";
+            out2.innerHTML = "";
         }
     }
 }
@@ -53,6 +56,7 @@ zapr.onclick = function () {
             zapr.innerHTML += this.innerHTML;
             itogZapr = zapr.innerHTML;
             out1.innerHTML = "";
+            out2.innerHTML = "";
         }
     }
 }
@@ -67,6 +71,7 @@ clean.onclick = function () {
         itogZapr = "";
     }
     out1.innerHTML = "";
+    out2.innerHTML = "";
 }
 
 // отменить последнее нажатие
@@ -78,18 +83,21 @@ back.onclick = function () {
         itogOst = itogOst.substring(0, itogOst.length - 1);
         ostatok.innerHTML = itogOst;
         out1.innerHTML = "";
+        out2.innerHTML = "";
     }
     if (rabota.classList[3] == "active") {
         itogRab = String(itogRab);
         itogRab = itogRab.substring(0, itogRab.length - 1);
         rabota.innerHTML = itogRab;
         out1.innerHTML = "";
+        out2.innerHTML = "";
     }
     if (zapr.classList[3] == "active") {
         itogZapr = String(itogZapr);
         itogZapr = itogZapr.substring(0, itogZapr.length - 1);
         zapr.innerHTML = itogZapr;
         out1.innerHTML = "";
+        out2.innerHTML = "";
     }
 }
 
@@ -113,6 +121,7 @@ for (let i = 0; i < inputsRadASI.length; i++) {
         emkBak = inputsRadASI[i].attributes[4].value || 0;
         naimASI = inputsRadASI[i].attributes[5].value || 0;
         out1.innerHTML = "";
+        out2.innerHTML = "";
     }
 }
 
@@ -128,44 +137,144 @@ rezult.onclick = function () {
     itogZapr = parseFloat(itogZapr) || 0;
     raschRab = parseFloat(raschRab) || 0;
     emkBak = parseFloat(emkBak) || 0;
-    resultat = itogOst - (itogRab * raschRab) + itogZapr;
+    
 
+    if (itogOst == 0  && itogRab!=0 && itogZapr ==0) {
+        resultat = itogRab * raschRab;
+        out1.style.color="black";
+        out1.innerHTML = `<span class="spanO" >${naimASI} (расход) </span>${resultat.toFixed(3)}
+        <span class="spanO"> л.</span>`;    
+    }
+    
+    else if (itogOst !=0 && itogRab!=0 && itogZapr == 0) {
+        resultat = (itogOst -( itogRab * raschRab)) + itogZapr;
+       
+            if(resultat<0){
+            out1.style.color="red";
+      
+            out1.innerHTML = `<span class="spanO" >${naimASI} (остаток) </span>${resultat.toFixed(3)}
+            <span class="spanO"> л.</span>`;
+            }
+            if(resultat>0&&resultat > emkBak){
+            out1.style.color="red";
+          
+            out1.innerHTML = `<span class="spanO" >${naimASI} (бак ${emkBak} л.) </span>${resultat.toFixed(3)}
+            <span class="spanO"> л.</span>`;
+            }   
+            if(resultat > 0 && resultat < emkBak){
+            out1.style.color="black";
+      
+            out1.innerHTML = `<span class="spanO" >${naimASI} (остаток) </span>${resultat.toFixed(3)}
+            <span class="spanO"> л.</span>`;
+    
+            }
+            out2.style.color="black";
+            ras = itogRab * raschRab ;
+            out2.innerHTML = `<span class="spanO" >${naimASI} (расход) </span>${ras.toFixed(3)}
+            <span class="spanO"> л.</span>`;
+        
 
-    if (resultat == 0) {
+    
+    }
 
+    else if (itogOst !=0 && itogRab == 0 && itogZapr == 0) {
+        resultat = itogOst;
+       
+        if (resultat>emkBak){
+            console.log(3.1);
+            out1.style.color="red";
+            out1.innerHTML = `<span class="spanO" >${naimASI} (бак ${emkBak} л.) </span>${resultat.toFixed(3)}
+            <span class="spanO"> л.</span>`;
+    
+        }
+
+        else{
         out1.style.color="black";
         out1.innerHTML = `<span class="spanO" >${naimASI} (остаток) </span>${resultat.toFixed(3)}
-        <span class="spanO"> л.</span>`;    
+        <span class="spanO"> л.</span>`;
+        }
+        
+
+    }
+
+
+
+    else if (itogOst ==0 && itogZapr != 0 && itogRab!=0) {
+        resultat = (itogOst -( itogRab * raschRab)) + itogZapr;
+       
+        if (resultat>emkBak || resultat<0){
+        out1.style.color="red";
+        out1.innerHTML = `<span class="spanO" >${naimASI} (бак ${emkBak} л.) </span>${resultat.toFixed(3)}
+        <span class="spanO"> л.</span>`;
+       }
+       else{
+        out1.style.color="black";
+        out1.innerHTML = `<span class="spanO" >${naimASI} (остаток) </span>${resultat.toFixed(3)}
+        <span class="spanO"> л.</span>`;
+
+       }
+        out2.style.color="black";
+        ras = itogRab * raschRab;
+        out2.innerHTML = `<span class="spanO" >${naimASI} (расход) </span>${ras.toFixed(3)}
+        <span class="spanO"> л.</span>`;
+        
        
     }
-    if (resultat <0 && itogOst==0 && itogZapr==0) {
+
+    else if (itogOst !=0 && itogRab == 0 && itogZapr != 0) {
+        resultat = itogOst + itogZapr;
+       if (resultat>emkBak){
+        out1.style.color="red";
+        out1.innerHTML = `<span class="spanO" >${naimASI} (бак ${emkBak} л.) </span>${resultat.toFixed(3)}
+        <span class="spanO"> л.</span>`;
+    }
+      else{
+        out1.style.color="black";
+        out1.innerHTML = `<span class="spanO" >${naimASI} (остаток) </span>${resultat.toFixed(3)}
+        <span class="spanO"> л.</span>`;
+      }       
+    }
+
+    else if (itogOst ==0 && itogRab == 0 && itogZapr != 0) {
+        resultat = itogZapr;
+       if (resultat>emkBak){
+        out1.style.color="red";
+        out1.innerHTML = `<span class="spanO" >${naimASI} (бак ${emkBak} л.) </span>${resultat.toFixed(3)}
+        <span class="spanO"> л.</span>`;
+       }
        
-        resultat=Math.abs(resultat);
+        else{
+            out1.style.color="black";
+            out1.innerHTML = `<span class="spanO" >${naimASI} (остаток) </span>${resultat.toFixed(3)}
+            <span class="spanO"> л.</span>`;
+        }
+        
+    }
+
+    if (itogOst == 0  && itogRab==0 && itogZapr ==0) {
+        resultat = 0;
+
         out1.style.color="black";
         out1.innerHTML = `<span class="spanO" >${naimASI} (расход) </span>${resultat.toFixed(3)}
         <span class="spanO"> л.</span>`;    
        
     }
-    if (resultat < 0 && (itogOst || itogZapr!=0))  {
-       
-        out1.style.color="red";
-        out1.innerHTML = `<span class="spanO" >${naimASI} (остаток) </span>${resultat.toFixed(3)}
-        <span class="spanO"> л.</span>`;
-  
-    }
-    if (resultat > 0 && (itogOst || itogZapr!=0) && emkBak>=resultat)  {
-        
-        out1.style.color="black";
-        out1.innerHTML = `<span class="spanO" >${naimASI} (остаток) </span>${resultat.toFixed(3)}
-        <span class="spanO"> л.</span>`;
-
-    }
-    if (resultat > 0 && (itogOst || itogZapr!=0) && emkBak<=resultat)  {
-       
+    else if (itogOst !=0 && itogRab != 0 && itogZapr != 0) {
+        resultat = (itogOst -( itogRab * raschRab)) + itogZapr;
+       if (resultat>emkBak){
         out1.style.color="red";
         out1.innerHTML = `<span class="spanO" >${naimASI} (бак ${emkBak} л.) </span>${resultat.toFixed(3)}
         <span class="spanO"> л.</span>`;
-
+    }
+      else{
+        out1.style.color="black";
+        out1.innerHTML = `<span class="spanO" >${naimASI} (остаток) </span>${resultat.toFixed(3)}
+        <span class="spanO"> л.</span>`;
+      } 
+      out2.style.color="black";
+      ras = itogRab * raschRab;
+      out2.innerHTML = `<span class="spanO" >${naimASI} (расход) </span>${ras.toFixed(3)}
+      <span class="spanO"> л.</span>`;     
     }
 
 }

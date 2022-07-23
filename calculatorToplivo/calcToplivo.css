@@ -52,13 +52,13 @@ box-shadow:5px 5px 10px 0px gray
     background-color:rgb(228, 228, 252);
     text-align: right;
     padding-right: 2%;
-    height: 60px;
+    height: 70px;
     font-weight: bold;
     border-right: 4px hsl(81, 61%, 88%) solid;
     border-bottom: 4px hsl(81, 100%, 89%) solid;
     border-left: 4px hsl(83, 18%, 47%) solid;
     border-top: 4px hsl(83, 18%, 47%) solid;
-   line-height:60px;
+   
 }
 .buttons{
     border-radius: 5px;

@@ -190,6 +190,7 @@ for (let i = 0; i < inputsRad.length; i++) {
 
 // расчет и вывод
 
+
 rezult.onclick = function () {
     os = vvodOst || 0;
     os = parseFloat(os);
@@ -199,34 +200,41 @@ rezult.onclick = function () {
     bn = parseInt(bn);
     sn = vvodPomp || 0;
     sn = parseInt(sn);
+    let re = (km * rashKm) + (bn * rashBn) + (sn * rashSn);
 
 if (os==0 && km == 0 && bn == 0 && sn == 0){
     resultat = (km * rashKm) + (bn * rashBn) + (sn * rashSn);
     out.innerHTML = `<span class="spanO">${naimAuto} (расход)</span> ${resultat.toFixed(3)} <span class="spanO"> л.</span>`;
-
 }
 
 
-   if(os == 0 && (km != 0 || bn != 0 || sn != 0 )){
-        resultat = (km * rashKm) + (bn * rashBn) + (sn * rashSn);
-        out.style.color="black";   
-        out.innerHTML = `<span class="spanO">${naimAuto} (расход)</span> ${resultat.toFixed(3)} <span class="spanO"> л.</span>`;
+if(os == 0 && (km != 0 || bn != 0 || sn != 0 )){
+    resultat = (km * rashKm) + (bn * rashBn) + (sn * rashSn);
+    out.style.color="black";   
+    out.innerHTML = `<span class="spanO">${naimAuto} (расход)</span> ${resultat.toFixed(3)} <span class="spanO"> л.</span>`;
+}
 
-    }
-
-    else if(os != 0 ){
-
-        resultat = os- ((km * rashKm) + (bn * rashBn) + (sn * rashSn));
-        if(resultat < 0){
-            out.style.color="red";
+else if(os != 0 && (km != 0 || bn != 0 || sn != 0 )){
+    resultat = os- ((km * rashKm) + (bn * rashBn) + (sn * rashSn));
+    
+    if(resultat < 0){
+        out.style.color="red";
         out.innerHTML = `<span class="spanO">${naimAuto} (остаток)</span> ${resultat.toFixed(3)} 
-        <span class="spanO"> л.</span>`;
-        }
+        <span class="spanO"> л.</span><br>
+        <span class="spanO">(расход)</span> ${re.toFixed(3)} <span class="spanO">л.</span>`;
+    }
         else{
             out.style.color="black";
-            out.innerHTML = `<span class="spanO">${naimAuto} (остаток)</span> ${resultat.toFixed(3)} <span class="spanO"> л.</span>`;
-
-        }
-        
+            out.innerHTML = `<span class="spanO">${naimAuto} (остаток)</span> ${resultat.toFixed(3)} 
+            <span class="spanO"> л.</span><br>
+            <span class="spanO">(расход)</span> ${re.toFixed(3)} <span class="spanO">л.</span>`;
+        }   
     }
+if(os != 0 && (km == 0 && bn == 0 && sn == 0 )){
+
+    resultat = os;    
+    out.style.color="black";
+    out.innerHTML = `<span class="spanO">${naimAuto} (остаток)</span> ${resultat.toFixed(3)} 
+    <span class="spanO"> л.</span>`;        
+}               
 }
