@@ -12,6 +12,8 @@ let vvodNoPomp = "";
 let vvodPomp = "";
 let vvodOst = "";
 
+let headNameAuto = document.querySelector(".name");
+
 // показать настройки
 
 let setting_but = document.querySelector("#setting");
@@ -29,7 +31,8 @@ for (let i = 0; i < localStorage.length; i++) {
     y = JSON.parse(y);
     radioBattons.insertAdjacentHTML("afterbegin", `<label><input type="radio"class = "radio" 
     name = "radio" id = ${y.avtoName || 0} dataKm=${y.km || 0} dataBn=${y.bn || 0}
-    dataSn=${y.sN || 0}>${y.avtoName}</label><br>`)
+    dataSn=${y.sN || 0}>${y.avtoName}</label><br>`);
+    
 }
 
 // ввод данных
@@ -161,6 +164,8 @@ for (let i = 0; i < inputsRad.length; i++) {
     rashKm = inputsRad[0].attributes[4].value || 0;
     rashBn = inputsRad[0].attributes[5].value || 0;
     rashSn = inputsRad[0].attributes[6].value || 0;
+    headNameAuto.innerHTML = `${naimAuto}`;
+
 
     rashKm = rashKm.replace(",", ".");
     rashBn = rashBn.replace(",", ".");
@@ -175,6 +180,8 @@ for (let i = 0; i < inputsRad.length; i++) {
         rashKm = inputsRad[i].attributes[4].value || 0;
         rashBn = inputsRad[i].attributes[5].value || 0;
         rashSn = inputsRad[i].attributes[6].value || 0;
+        headNameAuto.innerHTML = `${naimAuto}`;
+
 
         rashKm = rashKm.replace(",", ".");
         rashBn = rashBn.replace(",", ".");

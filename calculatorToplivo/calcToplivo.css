@@ -91,7 +91,9 @@ box-shadow:5px 5px 10px 0px gray
     border-right: 2px hsl(81, 61%, 88%) solid;
     border-bottom: 2px hsl(81, 61%, 88%) solid;
 }
-
+.name{
+    color: hsl(83, 18%, 47%);
+}
 .name1
 {
   height: 30px;

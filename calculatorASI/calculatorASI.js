@@ -9,6 +9,7 @@ let itogOst = 0;
 let itogRab = 0;
 let itogZapr = 0;
 let back = document.querySelector(".back");
+let headNameASI = document.querySelector(".name");
 
 function vvod_ost() {
     ostatok.classList.add("active");
@@ -111,17 +112,19 @@ let raschRab = inputsRadASI[0].attributes[2].value || 0;
 let emkBak = inputsRadASI[0].attributes[4].value || 0;
 
 let naimASI = inputsRadASI[0].attributes[5].value || 0;
-
+headNameASI.innerHTML=`${naimASI}`;
 
 for (let i = 0; i < inputsRadASI.length; i++) {
 
     inputsRadASI[i].onclick = function () {
 
+        
         raschRab = inputsRadASI[i].attributes[2].value || 0;
         emkBak = inputsRadASI[i].attributes[4].value || 0;
         naimASI = inputsRadASI[i].attributes[5].value || 0;
         out1.innerHTML = "";
         out2.innerHTML = "";
+        headNameASI.innerHTML=`${naimASI}`;
     }
 }
 
@@ -227,6 +230,7 @@ rezult.onclick = function () {
         out1.style.color="red";
         out1.innerHTML = `<span class="spanO" >${naimASI} (бак ${emkBak} л.) </span>${resultat.toFixed(3)}
         <span class="spanO"> л.</span>`;
+
     }
       else{
         out1.style.color="black";
@@ -261,15 +265,27 @@ rezult.onclick = function () {
     }
     else if (itogOst !=0 && itogRab != 0 && itogZapr != 0) {
         resultat = (itogOst -( itogRab * raschRab)) + itogZapr;
-       if (resultat>emkBak){
-        out1.style.color="red";
-        out1.innerHTML = `<span class="spanO" >${naimASI} (бак ${emkBak} л.) </span>${resultat.toFixed(3)}
-        <span class="spanO"> л.</span>`;
-    }
-      else{
-        out1.style.color="black";
-        out1.innerHTML = `<span class="spanO" >${naimASI} (остаток) </span>${resultat.toFixed(3)}
-        <span class="spanO"> л.</span>`;
+
+
+        if(resultat<0){
+            out1.style.color="red";
+      
+            out1.innerHTML = `<span class="spanO" >${naimASI} (остаток) </span>${resultat.toFixed(3)}
+            <span class="spanO"> л.</span>`;
+            }
+            if(resultat>0&&resultat > emkBak){
+            out1.style.color="red";
+          
+            out1.innerHTML = `<span class="spanO" >${naimASI} (бак ${emkBak} л.) </span>${resultat.toFixed(3)}
+            <span class="spanO"> л.</span>`;
+            }   
+            if(resultat > 0 && resultat < emkBak){
+            out1.style.color="black";
+      
+            out1.innerHTML = `<span class="spanO" >${naimASI} (остаток) </span>${resultat.toFixed(3)}
+            <span class="spanO"> л.</span>`;
+
+
       } 
       out2.style.color="black";
       ras = itogRab * raschRab;

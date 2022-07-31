@@ -84,6 +84,9 @@ span{
     grid-column: 1/3;
     text-align: left;
 }
+.name{
+    color: hsl(83, 18%, 47%);
+}
 .name1, .name2
 {
   height: 30px;
