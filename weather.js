@@ -21,7 +21,7 @@ for (let i = 0; i < data.list.length; i ++) {
 	// 	dt=`завтра ${dt.toLocaleString('default', {hour: '2-digit',minute: '2-digit'})} `;
 	// 	}
 	else{
-		dt = dt.toLocaleString('default', { month: 'short',day: 'numeric',hour: '2-digit',minute: '2-digit'});
+		dt = dt.toLocaleString('default', {weekday:'short', month: 'short',day: 'numeric',hour: '2-digit',minute: '2-digit' } );
 	}
 
 	
@@ -41,7 +41,7 @@ for (let i = 0; i < data.list.length; i ++) {
 	
 
 
-	weather.innerHTML += `<div class = 'weatherEl'> ${dt}  ${temper} ${icon} (${description}${wind})</div>`;
+	weather.innerHTML += `<div class = 'weatherEl'> ${dt }  ${temper}${icon}(${description}${wind})</div>`;
 
 	
 };
