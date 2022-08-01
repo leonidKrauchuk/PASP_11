@@ -41,7 +41,7 @@ for (let i = 0; i < data.list.length; i ++) {
 	
 
 
-	weather.innerHTML += `<div class = 'weatherEl'> ${dt }  ${temper}${icon}(${description}${wind})</div>`;
+	weather.innerHTML += `<div class = 'weatherEl'> <div class = 'weatherElDt'>${dt } </div> ${temper}${icon}(${description}${wind})</div>`;
 
 	
 };
