@@ -8,7 +8,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?lat=52.8293&lon=26.71678
 .then(function (data){
 	
 	// w_1.innerHTML=data.list;
-	console.log(data.list[0].main.temp);
+	
 for (let i = 0; i < data.list.length; i ++) {
 	let dt = new Date(data.list[i].dt_txt);
 	
