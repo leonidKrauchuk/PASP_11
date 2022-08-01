@@ -8,7 +8,7 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?lat=52.8293&lon=26.71678
 .then(function (data){
 	
 	// w_1.innerHTML=data.list;
-	
+	console.log(data);
 for (let i = 0; i < data.list.length; i ++) {
 	let dt = new Date(data.list[i].dt_txt);
 	
@@ -18,7 +18,7 @@ for (let i = 0; i < data.list.length; i ++) {
 	let description = data.list[i].weather[0].description;
 	
 	let iconId = data.list[i].weather[0].icon;
-	let icon = `<img src=http://openweathermap.org/img/wn/${iconId}.png alt="icon">`;
+	let icon = `<img src=http://openweathermap.org/img/wn/${iconId}@2x.png alt="icon">`;
 	let wind =`, ветер ${data.list[i].wind.speed} м/c, порывы до ${data.list[i].wind.gust} м/c`
 	
 	weather.innerHTML += `<div class = 'weatherEl'> ${dt}  ${temper} ${icon} (${description}${wind})</div>`;
