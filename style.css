@@ -43,9 +43,12 @@ body{
 	border: 1px solid;
 	margin: 5px;
 	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	color: rgb(90, 89, 89);
 }
+
 .spanTemper{
 	font-size: 30px;
+	color: #000;
 }
 
 .valuta{
