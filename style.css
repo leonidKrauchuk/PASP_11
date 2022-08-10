@@ -37,14 +37,14 @@ body{
 	color: #fff;
 }
 
-.weather,.weatherNext,.weatherNext_1,.weatherNext_2,.weatherNext_3{
+.weather_0,.weather_1,.weather_2,.weather_3,.weather_4{
 	display: flex;
 	flex-direction: row;
 	background-color: rgb(32, 32, 34);
 }
 
 
-.dtNext,.dtNext_1,.dtNext_2,.dtNext_3{
+.dt_0,.dt_1,.dt_2,.dt_3,.dt_4{
 	font-size: 25px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-style: italic;
@@ -67,13 +67,16 @@ body{
 	padding-bottom: 15px;
 }
 .taim{
-	font-size: 25px;
+	font-size: 30px;
 }
 .weatherElDt{
 	color: rgb(194, 190, 209);
 	font-size: 20px;
 	padding-bottom: 10px;;
 	/* text-align: center; */
+}
+sup{
+	font-size: 20px;
 }
 
 .spanTemper{
