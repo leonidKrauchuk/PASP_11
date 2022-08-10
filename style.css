@@ -36,25 +36,49 @@ body{
 	background: #000 ;
 	color: #fff;
 }
-.weatherEl{
-	background-color: rgb(223, 219, 219);
-	
-	padding: 8px;
-	width: 100%;
-	border-radius: 10px;
-	margin: 5px;
+
+.weather,.weatherNext,.weatherNext_1,.weatherNext_2,.weatherNext_3{
+	display: flex;
+	flex-direction: row;
+	background-color: rgb(34, 32, 49);
+}
+
+
+.dtNext,.dtNext_1,.dtNext_2,.dtNext_3{
+	font-size: 25px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-style: italic;
-	color: rgb(68, 68, 68);
+	color: #fff;
+	background-color: rgb(34, 32, 49);
+	padding-left: 10px;
+}
+
+.weatherEl{
+	
+	
+	width: 100%;
+	
+	
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: italic;
+	color: rgb(189, 176, 248);
+	text-align: center;
+	padding-top: 8px;
+	padding-bottom: 15px;
+}
+.taim{
+	font-size: 25px;
 }
 .weatherElDt{
-	color: rgb(34, 6, 156);
-	font-size: 25px;
+	color: rgb(189, 176, 248);
+	font-size: 20px;
+	padding-bottom: 10px;;
+	/* text-align: center; */
 }
 
 .spanTemper{
 	font-size: 35px;
-	color: #000;
+	color: rgb(255, 255, 255);
 	font-style: normal;
 }
 
