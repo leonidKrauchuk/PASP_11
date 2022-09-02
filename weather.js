@@ -16,7 +16,7 @@ function weatherBlizVrem(){
 
 let silaWind =data.list[i].wind.speed;
 let napr= `<div class = 'strelka'>&#8595</div>`;
-let wind = `<div> ${napr}${silaWind.toFixed(0)} м/c </div>`;
+let wind = `<div class = 'wind'> ${napr}${silaWind.toFixed(0)} м/c </div>`;
 
 				if (dtSeg.getDate()==dt.getDate()){
 					mestoDt.innerHTML=`в ближайшее время`;
@@ -78,7 +78,7 @@ function weatherNext(x){
 			let silaWind =data.list[i].wind.speed;
 			
 			let napr= `<div class = 'strelka_${x}'>&#8595</div>`;
-			let wind = `<div> ${napr}${silaWind.toFixed(0)} м/c </div>`;
+			let wind = `<div class = 'wind'> ${napr}${silaWind.toFixed(0)} м/c </div>`;
 			
 			if (dtSeg.getDate()==dt.getDate()){
 				
