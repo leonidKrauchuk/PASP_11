@@ -8,20 +8,27 @@ function weatherBlizVrem(){
 	.then(function (resp){return resp.json()})
 	.then(function (data){
 
+
 	for (let i = 0; i < 8; i ++) {
 			let dt = new Date(data.list[i].dt_txt);
 			let dtSeg = new Date();
+
+
+let silaWind =data.list[i].wind.speed;
+let napr= `<div class = 'strelka'>&#8595</div>`;
+let wind = `<div> ${napr}${silaWind.toFixed(0)} м/c </div>`;
+
 				if (dtSeg.getDate()==dt.getDate()){
 					mestoDt.innerHTML=`в ближайшее время`;
-					dt=`сегодня, <br> 
+					dt=`сегодня, <br>
 					<div class='taim'>${dt.toLocaleString('default', {hour: '2-digit'})}
 					<sup>00</sup></div> `;
 				}
 			
 				else{
 					dt = `${dt.toLocaleString('default', {weekday:'short', month: 'short',day: 'numeric' } )} <br> 
-					${dt.toLocaleString('default', {hour: '2-digit'})}
-					<sup>00</sup> `;
+					<div class='taim'>${dt.toLocaleString('default', {hour: '2-digit'})}
+					<sup>00</sup></div> `;
 				}
 		
 			let temper = data.list[i].main.temp;
@@ -33,13 +40,19 @@ function weatherBlizVrem(){
 				}
 			
 			let iconId = data.list[i].weather[0].icon;
-			let icon = `<img src=http://openweathermap.org/img/wn/${iconId}@2x.png alt="icon">`;
-	
-			weather.innerHTML += `<div class = 'weatherEl'> <div class = 'weatherElDt'>${dt } </div>
-			${temper}${icon}</div>`;
-			
-		};
+			let icon = `<img  src=http://openweathermap.org/img/wn/${iconId}@2x.png  alt="icon">`;
 
+			weather.innerHTML += `<div class = 'weatherEl'> <div class = 'weatherElDt'>${dt } </div>
+			${temper}${icon} ${wind}</div>`;
+	
+		};
+		let strelka = document.querySelectorAll('.strelka');
+
+		for (let i = 0; i < strelka.length; i ++) {
+			let naprawlenie = data.list[i].wind.deg;
+			strelka[i].style.transform =`rotate(${String(naprawlenie)}deg)`;
+
+		};
 	})
 .catch(function(){
 //catch anny errors
@@ -57,13 +70,18 @@ function weatherNext(x){
 	.then(function (data){
 	
 		let mestoDt = document.querySelector(`.dt_${x}`);
-	
+		let naprawlenie =[];
 		for (let i = 0; i < data.list.length; i ++) {
 			let dt = new Date(data.list[i].dt_txt);
 			let dtSeg = new Date();
-		
-			if (dtSeg.getDate()+x==dt.getDate()){
-
+			dtSeg.setDate(dtSeg.getDate()+x);
+			let silaWind =data.list[i].wind.speed;
+			
+			let napr= `<div class = 'strelka_${x}'>&#8595</div>`;
+			let wind = `<div> ${napr}${silaWind.toFixed(0)} м/c </div>`;
+			
+			if (dtSeg.getDate()==dt.getDate()){
+				
 				mestoDt.innerHTML=`${dt.toLocaleString('default', {weekday:'long', month: 'long',day: 'numeric'})}`;
 	
 				dt=`<div class='taim'> ${dt.toLocaleString('default', {hour: '2-digit'})}
@@ -76,16 +94,30 @@ function weatherNext(x){
 				else{
 					temper=`<span class ="spanTemper">  ${temper.toFixed(0)} </span>`;
 				}
-		
+				
 				let iconId = data.list[i].weather[0].icon;
 				let icon = `<img src=http://openweathermap.org/img/wn/${iconId}@2x.png alt="icon">`;
 				
-				weather.innerHTML += `<div class = 'weatherEl'> <div class = 'weatherElDt'>${dt } </div> ${temper}${icon}</div>`;
-			}
-		
+				weather.innerHTML += `<div class = 'weatherEl'> <div class = 'weatherElDt'>
+				${dt } </div> ${temper}${icon}${wind}</div>`;
+
+				naprawlenie.push( data.list[i].wind.deg);
+
+			};
+
+			};
+
+			let strelka = document.querySelectorAll(`.strelka_${x}`);
+
+			for (let i = 0; i < strelka.length; i ++) {
+				
+				strelka[i].style.transform =`rotate(${String(naprawlenie[i])}deg)`;
 		};
-	
+
+
+		
 	})
+
 	.catch(function(){
 	//catch anny errors
 	});

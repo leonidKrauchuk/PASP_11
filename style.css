@@ -84,6 +84,10 @@ sup{
 	color: rgb(255, 255, 255);
 	font-style: normal;
 }
+.strelka,.strelka_1,.strelka_2,.strelka_3,.strelka_4{
+	font-size: 30px;
+}
+
 
 .valuta{
 	width: 100%;
