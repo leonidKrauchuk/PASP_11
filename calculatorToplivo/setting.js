@@ -57,7 +57,7 @@ if (provNalichiya !== "avtoName") {
 
     avtoName = "АЦ40(131)137"
 
-    let km1 = 0.51
+    let km1 = 0.515
     let sN1 = 0.33
     let bn1 = 0.15
     avto =
